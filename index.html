@@ -56,7 +56,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
 .fact b{display:block;font-size:20px;letter-spacing:-.01em}
-.fact span{font-size:13px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.fact > span{font-size:13px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 @media (max-width:820px){.facts{grid-template-columns:repeat(2,1fr)}}
 
 /* sections */
@@ -87,6 +87,7 @@ h2{font-size:clamp(26px,3.6vw,34px);letter-spacing:-.02em;margin:0;line-height:1
 .t-mikro{background:#9aa3ad}.t-standar{background:#4f8fd6}.t-gold{background:#e6ac3a}.t-platinum{background:linear-gradient(135deg,#d9dde3,#8c96a3)}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
+.grid2>*,.rules>*,.steps>*,.callouts>*{min-width:0}
 @media (max-width:860px){.grid2{grid-template-columns:1fr}}
 .cats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 .cat{background:var(--surface-2);border-radius:12px;padding:10px 12px;font-size:14px}
@@ -135,7 +136,8 @@ h2{font-size:clamp(26px,3.6vw,34px);letter-spacing:-.02em;margin:0;line-height:1
 .jtext h3{margin:4px 0 8px;font-size:22px;letter-spacing:-.01em}
 .jtext p{margin:0 0 10px;color:var(--ink-2)}
 .tip{display:flex;gap:10px;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-.tip b{color:var(--accent-ink);white-space:nowrap}
+.tip > b{color:var(--accent-ink);white-space:nowrap}
+.tip > span{min-width:0}
 .branch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .branch div{border-radius:12px;padding:10px 12px;font-size:14px}
 .branch .ok{background:var(--good-soft)}.branch .no{background:var(--bad-soft)}
@@ -153,6 +155,29 @@ h2{font-size:clamp(26px,3.6vw,34px);letter-spacing:-.02em;margin:0;line-height:1
 .faq summary::after{content:"+";color:var(--ink-3);font-weight:800;font-size:18px;line-height:1}
 .faq details[open] summary::after{content:"–"}
 .faq .a{padding:0 16px 14px;color:var(--ink-2)}
+
+.warn{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:12px;padding:12px 14px;margin:0 0 24px;font-size:14px;color:var(--ink-2)}
+.warn b{display:block;color:var(--accent-ink);margin-bottom:2px}
+.phones{display:flex;gap:14px;justify-content:center;min-width:0}
+.jstep>*{min-width:0}
+.jstep{grid-template-columns:auto 1fr!important}
+.jstep:nth-child(even){grid-template-columns:1fr auto!important}
+.jstep:nth-child(even) .phones{order:2}
+.chips{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;font-size:14px;margin-top:6px}
+.chip{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:700;font-size:13px;white-space:nowrap;justify-self:start}
+.chip-t{color:var(--ink-2)}
+.c-blue{background:#e4edff;color:#1f4fd1}.c-green{background:var(--good-soft);color:var(--good)}.c-amber{background:#fdf0d8;color:#9a6408}
+.c-grey{background:var(--surface-2);color:var(--ink-3)}.c-red{background:var(--bad-soft);color:var(--bad)}.c-link{background:transparent;color:#1f4fd1;padding-left:0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-blue{background:#1a2546;color:#8fb0ff}:root:not([data-theme="light"]) .c-amber{background:#33270f;color:#f2c56b}:root:not([data-theme="light"]) .c-link{color:#8fb0ff}}
+@media (max-width:860px){.phone{width:190px}}
+@media (max-width:640px){
+  .jstep,.jstep:nth-child(even){grid-template-columns:1fr!important}
+  .jstep:nth-child(even) .phones{order:0}
+  .phones{width:100%}
+  .phones .phone{width:auto;flex:1 1 0;max-width:200px;min-width:0;margin:0}
+  .phones .phone:only-child{width:200px}
+  .phone .ph{font-size:12px}
+}
 footer{padding:32px 0 48px;border-top:1px solid var(--line);color:var(--ink-3);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 </style>
@@ -321,54 +346,117 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <section id="perjalanan">
     <div class="sec-head"><span class="num">05</span><h2><span class="id">Perjalanan nasabah di aplikasi</span><span class="en">The client journey in the app</span></h2></div>
     <p class="sub"><span class="id">Apa yang dilihat nasabah, layar demi layar — supaya sales bisa memandu nasabah dengan percaya diri.</span><span class="en">What the client sees, screen by screen — so sales can guide clients with confidence.</span></p>
+    <div class="warn"><b>⚠️ <span class="id">Angka di layar hanya contoh</span><span class="en">Numbers on screen are samples only</span></b>
+      <span class="id">Screenshot memakai data contoh (saldo, rate per lot, masa berlaku, batas harian). Acuan resmi untuk nasabah selalu tabel tier &amp; koin di bagian 02–03 dan S&amp;K.</span>
+      <span class="en">Screenshots use sample data (balance, rate per lot, expiry, daily limit). The official reference for clients is always the tier &amp; coin tables in sections 02–03 and the T&amp;C.</span></div>
 
     <div class="journey">
       <div class="jstep">
-        <figure class="phone"><img src="images/01.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">01</span></figure>
+        <div class="phones"><figure class="phone missing"><span class="ph"><span class="id">Titik masuk dari aplikasi HSB<br>(segera)</span><span class="en">Entry point from the HSB app<br>(coming soon)</span></span></figure></div>
         <div class="jtext"><span class="k"><span class="id">LANGKAH 1</span><span class="en">STEP 1</span></span>
           <h3><span class="id">Buka Loyalty dari aplikasi HSB</span><span class="en">Open Loyalty from the HSB app</span></h3>
-          <p><span class="id">Nasabah masuk ke halaman Loyalty Program langsung dari aplikasi HSB.</span><span class="en">The client opens the Loyalty Program page straight from the HSB app.</span></p></div>
+          <p><span class="id">Nasabah membuka HSB Loyalty langsung dari aplikasi HSB. Saat pertama kali masuk, muncul tur singkat yang menjelaskan cara dapat dan menukar koin (bisa dilewati).</span><span class="en">The client opens HSB Loyalty straight from the HSB app. On the first visit, a short tour explains how to earn and redeem coins (it can be skipped).</span></p></div>
       </div>
+
       <div class="jstep">
-        <figure class="phone"><img src="images/02.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">02</span></figure>
+        <div class="phones">
+          <figure class="phone"><img src="images/id/01_beranda.jpg" alt="Beranda HSB Loyalty" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">01</span></figure>
+          <figure class="phone"><img src="images/id/02_beranda_tur.jpg" alt="Tur pertama kali" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">02</span></figure>
+        </div>
         <div class="jtext"><span class="k"><span class="id">LANGKAH 2</span><span class="en">STEP 2</span></span>
-          <h3><span class="id">Lihat tier &amp; saldo koin</span><span class="en">Check tier &amp; coin balance</span></h3>
-          <p><span class="id">Halaman utama menampilkan tier nasabah dan jumlah koin yang dimiliki.</span><span class="en">The home screen shows the client's tier and current coin balance.</span></p></div>
+          <h3><span class="id">Beranda: saldo koin, tier &amp; hadiah</span><span class="en">Home: coin balance, tier &amp; rewards</span></h3>
+          <p><span class="id">Di bagian atas: <b>Saldo Koin</b> dan label tier. Di bawahnya ada aktivitas terbaru nasabah lain dan katalog hadiah dengan harga koin. Kartu kuning <b>"Dapatkan lebih banyak koin"</b> membawa ke halaman cara dapat koin.</span><span class="en">At the top: <b>Coin Balance</b> and the tier label. Below are other clients' recent activity and the reward catalogue with coin prices. The yellow <b>"Get more coins"</b> card leads to the earning page.</span></p>
+          <div class="tip"><b><span class="id">Sering ditanya</span><span class="en">Often asked</span></b><span><span class="id">"Koin saya di mana?" → angka besar di pojok kiri atas. "Tier itu apa?" → label di samping saldo.</span><span class="en">"Where are my coins?" → the big number top-left. "What is a tier?" → the label next to the balance.</span></span></div></div>
       </div>
+
       <div class="jstep">
-        <figure class="phone"><img src="images/03.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">03</span></figure>
+        <div class="phones">
+          <figure class="phone"><img src="images/id/04_earn_daily_trading.jpg" alt="Trading Harian" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">04</span></figure>
+          <figure class="phone"><img src="images/id/07_earn_pilih_akun.jpg" alt="Pilih akun" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">07</span></figure>
+        </div>
         <div class="jtext"><span class="k"><span class="id">LANGKAH 3</span><span class="en">STEP 3</span></span>
-          <h3><span class="id">Ikuti aktivitas &amp; kumpulkan koin</span><span class="en">Join activities &amp; collect coins</span></h3>
-          <p><span class="id">Nasabah melihat aktivitas yang memberi koin. Koin dari trading masuk otomatis setelah posisi ditutup.</span><span class="en">The client sees the activities that earn coins. Trading coins are credited automatically after the position closes.</span></p>
-          <div class="tip"><b><span class="id">Tips sales</span><span class="en">Sales tip</span></b><span><span class="id">Koin belum masuk? Cek: posisi sudah ditutup, ditahan ≥ 3 menit, dan di akun real.</span><span class="en">No coins yet? Check: position closed, held ≥ 3 minutes, on a real account.</span></span></div></div>
+          <h3><span class="id">Dapatkan: Trading Harian &amp; pilih akun</span><span class="en">Earn: Daily Trading &amp; choose account</span></h3>
+          <p><span class="id">Tab <b>Dapatkan</b> menampilkan kartu <b>"Hari ini"</b>: berapa lot yang sudah ditradingkan hari ini dan koin yang didapat. Nasabah bisa memilih akun trading — setiap akun diberi label <b>Memenuhi syarat</b> atau <b>Tidak memenuhi syarat</b>.</span><span class="en">The <b>Earn</b> tab shows a <b>"Today"</b> card: lots traded today and coins earned. Clients can pick a trading account — each is labelled <b>Eligible</b> or <b>Not eligible</b>.</span></p>
+          <div class="tip"><b><span class="id">Sering ditanya</span><span class="en">Often asked</span></b><span><span class="id">"Kenapa akun X tidak dapat koin?" → cek labelnya di daftar akun. "Kenapa koin belum masuk?" → koin butuh beberapa saat setelah posisi ditutup; selama itu statusnya "Koin sedang ditambahkan".</span><span class="en">"Why doesn't account X earn coins?" → check its label in the account list. "Why no coins yet?" → coins take a short while after the position closes; meanwhile it shows "Coins are being added".</span></span></div></div>
       </div>
+
       <div class="jstep">
-        <figure class="phone"><img src="images/04.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">04</span></figure>
+        <div class="phones">
+          <figure class="phone"><img src="images/id/08_earn_tier_akun.jpg" alt="Tingkat akun" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">08</span></figure>
+          <figure class="phone"><img src="images/id/06_earn_cara_kerja.jpg" alt="Cara kerjanya" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">06</span></figure>
+        </div>
         <div class="jtext"><span class="k"><span class="id">LANGKAH 4</span><span class="en">STEP 4</span></span>
-          <h3><span class="id">Cek riwayat &amp; masa berlaku koin</span><span class="en">Check coin history &amp; expiry</span></h3>
-          <p><span class="id">Nasabah bisa melihat koin masuk/keluar. Setiap koin berlaku 180 hari sejak dikreditkan.</span><span class="en">The client can see coins in and out. Each coin is valid for 180 days from the date credited.</span></p></div>
+          <h3><span class="id">Tier akun, rate &amp; "Cara kerjanya"</span><span class="en">Account tier, rates &amp; "How it works"</span></h3>
+          <p><span class="id">Nasabah bisa melihat tier akunnya dan rate koin per lot untuk setiap grup simbol. Trading kecil (0,01 lot) juga dapat koin dengan rate yang sama. Bagian <b>"Cara kerjanya"</b> merangkum aturan: minimal tahan posisi, waktu koin masuk, masa berlaku, dan link S&amp;K.</span><span class="en">Clients can see their account tier and the coin rate per lot for each symbol group. Small trades (0.01 lot) also earn coins at the same rate. <b>"How it works"</b> sums up the rules: minimum hold time, crediting time, expiry, and the T&amp;C link.</span></p>
+          <div class="tip"><b><span class="id">Ingat</span><span class="en">Remember</span></b><span><span class="id">Rate dan masa berlaku di screenshot adalah contoh. Gunakan tabel di bagian 03 dan masa berlaku 180 hari sesuai S&amp;K.</span><span class="en">Rates and expiry in the screenshots are samples. Use the table in section 03 and the 180-day validity from the T&amp;C.</span></span></div></div>
       </div>
+
       <div class="jstep">
-        <figure class="phone"><img src="images/05.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">05</span></figure>
+        <div class="phones">
+          <figure class="phone"><img src="images/id/09_earn_riwayat.jpg" alt="Riwayat trading" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">09</span></figure>
+        </div>
         <div class="jtext"><span class="k"><span class="id">LANGKAH 5</span><span class="en">STEP 5</span></span>
-          <h3><span class="id">Masuk ke HSB Mall</span><span class="en">Go to HSB Mall</span></h3>
-          <p><span class="id">Dari halaman Loyalty, nasabah membuka HSB Mall untuk melihat barang yang bisa ditukar.</span><span class="en">From the Loyalty page, the client opens HSB Mall to browse items they can redeem.</span></p></div>
-      </div>
-      <div class="jstep">
-        <figure class="phone"><img src="images/06.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">06</span></figure>
-        <div class="jtext"><span class="k"><span class="id">LANGKAH 6</span><span class="en">STEP 6</span></span>
-          <h3><span class="id">Pilih barang &amp; tukarkan</span><span class="en">Pick an item &amp; redeem</span></h3>
-          <p><span class="id">Stok, harga, dan jumlah koin tampil real-time. Setelah dikonfirmasi, penukaran tidak bisa dibatalkan.</span><span class="en">Stock, price, and coin cost are live. Once confirmed, a redemption cannot be cancelled.</span></p>
-          <div class="tip"><b><span class="id">Tips sales</span><span class="en">Sales tip</span></b><span><span class="id">Ingatkan: pengiriman hanya ke Indonesia, pajak &amp; ongkir ditanggung nasabah.</span><span class="en">Remind clients: delivery within Indonesia only; tax &amp; shipping are on the client.</span></span></div></div>
-      </div>
-      <div class="jstep">
-        <figure class="phone"><img src="images/07.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">07</span></figure>
-        <div class="jtext"><span class="k"><span class="id">LANGKAH 7</span><span class="en">STEP 7</span></span>
-          <h3><span class="id">Hasil penukaran</span><span class="en">Redemption result</span></h3>
-          <div class="branch">
-            <div class="ok"><b><span class="id">Berhasil</span><span class="en">Success</span></b><br><span class="id">Koin terpotong sesuai harga barang.</span><span class="en">Coins are deducted by the item's price.</span></div>
-            <div class="no"><b><span class="id">Gagal</span><span class="en">Failed</span></b><br><span class="id">Koin dikembalikan otomatis ke saldo nasabah.</span><span class="en">Coins are refunded automatically to the client's balance.</span></div>
+          <h3><span class="id">Riwayat koin dari trading</span><span class="en">Trading coin history</span></h3>
+          <p><span class="id">Per hari: jumlah lot, koin, dan status.</span><span class="en">Per day: lots, coins, and status.</span></p>
+          <div class="chips">
+            <span class="chip c-blue"><span class="id">Sedang diproses</span><span class="en">Processing</span></span><span class="chip-t"><span class="id">koin sedang dihitung</span><span class="en">coins being calculated</span></span>
+            <span class="chip c-green"><span class="id">Sudah masuk</span><span class="en">Credited</span></span><span class="chip-t"><span class="id">koin sudah di saldo</span><span class="en">coins in balance</span></span>
+            <span class="chip c-link"><span class="id">Koin maksimal tercapai</span><span class="en">Max coins reached</span></span><span class="chip-t"><span class="id">batas koin harian tercapai</span><span class="en">daily coin limit reached</span></span>
           </div></div>
+      </div>
+
+      <div class="jstep">
+        <div class="phones">
+          <figure class="phone"><img src="images/id/10_coins_saldo_dan_kedaluwarsa.jpg" alt="Saldo koin dan kedaluwarsa" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">10</span></figure>
+          <figure class="phone"><img src="images/id/11_coins_riwayat.jpg" alt="Riwayat koin" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">11</span></figure>
+        </div>
+        <div class="jtext"><span class="k"><span class="id">LANGKAH 6</span><span class="en">STEP 6</span></span>
+          <h3><span class="id">Tab Koin: saldo, kedaluwarsa &amp; riwayat</span><span class="en">Coins tab: balance, expiry &amp; history</span></h3>
+          <p><span class="id">Nasabah melihat saldo, peringatan koin yang akan kedaluwarsa, dan setiap kelompok koin beserta tanggal kedaluwarsanya. Tab <b>Riwayat</b> menampilkan koin masuk/keluar per jam.</span><span class="en">Clients see their balance, a warning for coins about to expire, and each coin batch with its expiry date. The <b>History</b> tab lists coins in/out by time.</span></p>
+          <div class="tip"><b><span class="id">Penting</span><span class="en">Key point</span></b><span><span class="id">Saat menukar, <b>koin yang paling cepat kedaluwarsa dipakai lebih dulu</b>.</span><span class="en">When redeeming, <b>coins that expire soonest are used first</b>.</span></span></div></div>
+      </div>
+
+      <div class="jstep">
+        <div class="phones">
+          <figure class="phone"><img src="images/id/12_redeem_syarat_kyc.jpg" alt="Syarat menukar" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">12</span></figure>
+        </div>
+        <div class="jtext"><span class="k"><span class="id">LANGKAH 7</span><span class="en">STEP 7</span></span>
+          <h3><span class="id">Menekan "Tukar" sebelum memenuhi syarat</span><span class="en">Tapping "Redeem" before being eligible</span></h3>
+          <p><span class="id">Jika belum memenuhi syarat, muncul panduan <b>"Cara memulai"</b>: (1) verifikasi akun (KYC), (2) deposit pertama, (3) trading — koin ditambahkan otomatis.</span><span class="en">If not yet eligible, a <b>"How to start"</b> guide appears: (1) verify the account (KYC), (2) make a first deposit, (3) trade — coins are added automatically.</span></p>
+          <div class="tip"><b><span class="id">Pertanyaan #1</span><span class="en">Question #1</span></b><span><span class="id">"Kenapa saya tidak bisa tukar hadiah?" → arahkan nasabah ke 3 langkah ini.</span><span class="en">"Why can't I redeem?" → walk the client through these 3 steps.</span></span></div></div>
+      </div>
+
+      <div class="jstep">
+        <div class="phones"><figure class="phone missing"><span class="ph"><span class="id">HSB Mall<br>(screenshot setelah uji di produksi)</span><span class="en">HSB Mall<br>(screenshot after production test)</span></span></figure></div>
+        <div class="jtext"><span class="k"><span class="id">LANGKAH 8</span><span class="en">STEP 8</span></span>
+          <h3><span class="id">Tukar di HSB Mall</span><span class="en">Redeem at HSB Mall</span></h3>
+          <p><span class="id">Nasabah yang memenuhi syarat menekan <b>Tukar</b> dan HSB Mall terbuka di dalam aplikasi. Stok, harga, dan jumlah koin tampil real-time. Setelah dikonfirmasi, penukaran tidak bisa dibatalkan.</span><span class="en">Eligible clients tap <b>Redeem</b> and HSB Mall opens inside the app. Stock, price, and coin cost are live. Once confirmed, a redemption cannot be cancelled.</span></p>
+          <div class="tip"><b><span class="id">Ingatkan</span><span class="en">Remind</span></b><span><span class="id">Pengiriman hanya ke Indonesia; pajak &amp; ongkir ditanggung nasabah.</span><span class="en">Delivery within Indonesia only; tax &amp; shipping are on the client.</span></span></div></div>
+      </div>
+
+      <div class="jstep">
+        <div class="phones">
+          <figure class="phone"><img src="images/id/13_riwayat_penukaran.jpg" alt="Riwayat penukaran" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">13</span></figure>
+        </div>
+        <div class="jtext"><span class="k"><span class="id">LANGKAH 9</span><span class="en">STEP 9</span></span>
+          <h3><span class="id">Riwayat penukaran &amp; status pesanan</span><span class="en">Redemption history &amp; order status</span></h3>
+          <p><span class="id">Dari tab Koin → <b>Riwayat penukaran</b>, nasabah memantau setiap pesanan:</span><span class="en">From the Coins tab → <b>Redemption history</b>, clients track every order:</span></p>
+          <div class="chips">
+            <span class="chip c-blue"><span class="id">Pesanan dibuat</span><span class="en">Order created</span></span><span class="chip-t"><span class="id">pesanan diterima</span><span class="en">order received</span></span>
+            <span class="chip c-amber"><span class="id">Diproses</span><span class="en">Processing</span></span><span class="chip-t"><span class="id">sedang disiapkan / dikirim</span><span class="en">being prepared / shipped</span></span>
+            <span class="chip c-green"><span class="id">Selesai</span><span class="en">Completed</span></span><span class="chip-t"><span class="id">hadiah sudah diterima</span><span class="en">reward delivered</span></span>
+            <span class="chip c-grey"><span class="id">Dibatalkan</span><span class="en">Cancelled</span></span><span class="chip-t"><span class="id">pesanan dibatalkan</span><span class="en">order cancelled</span></span>
+            <span class="chip c-red"><span class="id">Gagal</span><span class="en">Failed</span></span><span class="chip-t"><span class="id">penukaran gagal — koin dikembalikan</span><span class="en">redemption failed — coins refunded</span></span>
+          </div></div>
+      </div>
+
+      <div class="jstep">
+        <div class="phones">
+          <figure class="phone"><img src="images/id/15_tamu_belum_login.jpg" alt="Belum login" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph">15</span></figure>
+        </div>
+        <div class="jtext"><span class="k"><span class="id">CATATAN</span><span class="en">NOTE</span></span>
+          <h3><span class="id">Nasabah yang belum login</span><span class="en">Clients who aren't logged in</span></h3>
+          <p><span class="id">Halaman tetap bisa dilihat (katalog hadiah, aktivitas), tetapi saldo koin tampil 0. Minta nasabah login untuk melihat koin miliknya.</span><span class="en">The page is still viewable (reward catalogue, activity) but the coin balance shows 0. Ask the client to log in to see their own coins.</span></p></div>
       </div>
     </div>
   </section>
@@ -381,6 +469,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <details><summary><span class="id">Tier saya ditentukan dari apa?</span><span class="en">How is my tier decided?</span></summary><div class="a"><span class="id">Dari Net Deposit di akun real: Mikro &lt; $200, Standar $200–&lt;$1,000, Gold $1,000–$5,000, Platinum ≥ $5,000 (#2).</span><span class="en">By Net Deposit on the real account: Mikro &lt; $200, Standard $200–&lt;$1,000, Gold $1,000–$5,000, Platinum ≥ $5,000 (#2).</span></div></details>
     <details><summary><span class="id">Berapa lama koin berlaku?</span><span class="en">How long are coins valid?</span></summary><div class="a"><span class="id">180 hari sejak koin dikreditkan ke akun (#6).</span><span class="en">180 days from the date the coins are credited (#6).</span></div></details>
     <details><summary><span class="id">Bisa ditukar jadi uang atau margin?</span><span class="en">Can coins become cash or margin?</span></summary><div class="a"><span class="id">Tidak. Koin hanya untuk barang di HSB Mall dan tidak bisa ditransfer ke akun lain (#7).</span><span class="en">No. Coins are only for items at HSB Mall and cannot be transferred to another account (#7).</span></div></details>
+    <details><summary><span class="id">Kenapa saya tidak bisa tukar hadiah?</span><span class="en">Why can't I redeem a reward?</span></summary><div class="a"><span class="id">Nasabah perlu: (1) verifikasi akun (KYC), (2) deposit pertama, (3) trading untuk mengumpulkan koin. Aplikasi menampilkan panduan ini saat nasabah menekan "Tukar" (Langkah 7).</span><span class="en">The client needs to: (1) verify the account (KYC), (2) make a first deposit, (3) trade to collect coins. The app shows this guide when the client taps "Redeem" (Step 7).</span></div></details>
+    <details><summary><span class="id">Koin mana yang dipakai lebih dulu?</span><span class="en">Which coins are used first?</span></summary><div class="a"><span class="id">Koin yang paling cepat kedaluwarsa dipakai lebih dulu. Nasabah bisa melihat tanggal kedaluwarsa tiap kelompok koin di tab Koin.</span><span class="en">Coins that expire soonest are used first. Clients can see each coin batch's expiry date in the Coins tab.</span></div></details>
     <details><summary><span class="id">Bisa batalkan penukaran?</span><span class="en">Can I cancel a redemption?</span></summary><div class="a"><span class="id">Tidak, penukaran yang sudah dilakukan tidak bisa dibatalkan (#9). Jika penukaran gagal karena sistem, koin dikembalikan otomatis.</span><span class="en">No, completed redemptions cannot be cancelled (#9). If a redemption fails on the system side, the coins are refunded automatically.</span></div></details>
     <details><summary><span class="id">Barang bisa dikirim ke luar Indonesia?</span><span class="en">Can items ship outside Indonesia?</span></summary><div class="a"><span class="id">Tidak, hanya ke domisili Indonesia. Pajak dan ongkir ditanggung nasabah (#10, #11).</span><span class="en">No, Indonesia only. Taxes and shipping are paid by the client (#10, #11).</span></div></details>
     <details><summary><span class="id">Harga atau stok barang berubah?</span><span class="en">Do prices or stock change?</span></summary><div class="a"><span class="id">Ya, stok, harga, dan jumlah koin tampil real-time di HSB Mall (#8).</span><span class="en">Yes, stock, price, and coin cost are shown in real time at HSB Mall (#8).</span></div></details>
