@@ -90,7 +90,7 @@ h2{font-size:clamp(26px,3.6vw,34px);letter-spacing:-.02em;margin:0;line-height:1
 .tbl td.n,.tbl th.n{text-align:right;font-variant-numeric:tabular-nums}
 .tier{display:inline-flex;align-items:center;gap:8px;font-weight:700}
 .dot{width:10px;height:10px;border-radius:50%}
-.t-mikro{background:#9aa3ad}.t-standar{background:#4f8fd6}.t-gold{background:#e6ac3a}.t-platinum{background:linear-gradient(135deg,#d9dde3,#8c96a3)}
+.t-mikro{background:#9aa3ad}.t-standar{background:#4f8fd6}.t-gold{background:#8b5cf6}.t-platinum{background:linear-gradient(135deg,#d9dde3,#8c96a3)}
 .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;align-items:start}
 .grid2>*,.rules>*,.steps>*,.callouts>*{min-width:0}
@@ -246,18 +246,19 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
   <!-- 2. Tier -->
   <section id="tier">
     <div class="sec-head"><span class="num">02</span><h2><span class="id">Tingkatan (tier) nasabah</span><span class="en">Client tiers</span></h2></div>
-    <p class="sub"><span class="id">Tier ditentukan dari Net Deposit di akun real. Semakin tinggi tier, semakin banyak koin per lot.</span><span class="en">Tier is based on Net Deposit on the real account. Higher tier = more coins per lot.</span></p>
+    <p class="sub"><span class="id">Tier berlaku <b>per akun trading</b> (bukan per nasabah), berdasarkan <b>total deposit ke akun tersebut</b>. Semakin tinggi tier, semakin banyak koin per lot.</span><span class="en">Tiers apply <b>per trading account</b> (not per client), based on the <b>total deposit into that account</b>. Higher tier = more coins per lot.</span></p>
     <div class="card scroll-x">
       <table class="tbl">
-        <thead><tr><th><span class="id">Tingkatan</span><span class="en">Tier</span></th><th>Net Deposit</th></tr></thead>
+        <thead><tr><th><span class="id">Tingkatan</span><span class="en">Tier</span></th><th><span class="id">Total deposit ke akun</span><span class="en">Total deposit into the account</span></th></tr></thead>
         <tbody>
-          <tr><td><span class="tier"><span class="dot t-mikro"></span>Mikro</span></td><td>&lt; $200</td></tr>
-          <tr><td><span class="tier"><span class="dot t-standar"></span>Standar</span></td><td>$200 ≤ Net Deposit &lt; $1,000</td></tr>
-          <tr><td><span class="tier"><span class="dot t-gold"></span>Gold</span></td><td>$1,000 ≤ Net Deposit ≤ $5,000</td></tr>
+          <tr><td><span class="tier"><span class="dot t-mikro"></span>Micro</span></td><td>&lt; $200</td></tr>
+          <tr><td><span class="tier"><span class="dot t-standar"></span>Standard</span></td><td>≥ $200</td></tr>
+          <tr><td><span class="tier"><span class="dot t-gold"></span>VIP</span></td><td>≥ $1,000</td></tr>
           <tr><td><span class="tier"><span class="dot t-platinum"></span>Platinum</span></td><td>≥ $5,000</td></tr>
         </tbody>
       </table>
     </div>
+    <div class="note"><span class="id"><b>Penting:</b> label tier di aplikasi mengikuti status akun. Setelah total deposit mencapai batas, kenaikan tier <b>diproses oleh HSB</b> — sebelum diproses, aplikasi menampilkan "sudah mencapai [tier]" tetapi label masih tier lama. Nasabah dengan beberapa akun bisa memiliki tier berbeda di tiap akun.</span><span class="en"><b>Important:</b> the tier label in the app follows the account status. Once the total deposit reaches a threshold, the upgrade is <b>processed by HSB</b> — until then the app shows "reached [tier]" but the label still shows the old tier. A client with several accounts can have a different tier on each account.</span></div>
   </section>
 
   <!-- 3. Coins -->
@@ -270,9 +271,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
         <table class="tbl">
           <thead><tr><th><span class="id">Tier</span><span class="en">Tier</span></th><th class="n"><span class="id">Logam Mulia</span><span class="en">Metals</span></th><th class="n"><span class="id">Energi</span><span class="en">Energy</span></th><th class="n"><span class="id">Indeks</span><span class="en">Indices</span></th><th class="n">Forex</th></tr></thead>
           <tbody>
-            <tr><td><span class="tier"><span class="dot t-mikro"></span>Mikro</span></td><td class="n">700</td><td class="n">600</td><td class="n">400</td><td class="n">500</td></tr>
-            <tr><td><span class="tier"><span class="dot t-standar"></span>Standar</span></td><td class="n">800</td><td class="n">700</td><td class="n">500</td><td class="n">600</td></tr>
-            <tr><td><span class="tier"><span class="dot t-gold"></span>Gold</span></td><td class="n">900</td><td class="n">800</td><td class="n">600</td><td class="n">700</td></tr>
+            <tr><td><span class="tier"><span class="dot t-mikro"></span>Micro</span></td><td class="n">700</td><td class="n">600</td><td class="n">400</td><td class="n">500</td></tr>
+            <tr><td><span class="tier"><span class="dot t-standar"></span>Standard</span></td><td class="n">800</td><td class="n">700</td><td class="n">500</td><td class="n">600</td></tr>
+            <tr><td><span class="tier"><span class="dot t-gold"></span>VIP</span></td><td class="n">900</td><td class="n">800</td><td class="n">600</td><td class="n">700</td></tr>
             <tr><td><span class="tier"><span class="dot t-platinum"></span>Platinum</span></td><td class="n">1000</td><td class="n">900</td><td class="n">700</td><td class="n">800</td></tr>
           </tbody>
         </table>
@@ -283,16 +284,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
           <div class="cat"><b><span class="id">Indeks</span><span class="en">Indices</span></b><span>DJ30, SP500, TECH100, HK50, JPN225</span></div>
           <div class="cat"><b>Forex</b><span>USDJPY, EURUSD, AUDUSD, GBPUSD, <span class="id">dll</span><span class="en">etc.</span></span></div>
         </div>
-        <div class="note"><span class="id"><b>Contoh:</b> Nasabah tier Mikro trading 0.50 lot XAUUSD. Setelah posisi ditutup → 0.50 × 700 = <b>350 koin</b>.</span><span class="en"><b>Example:</b> A Mikro-tier client trades 0.50 lot XAUUSD. After the position closes → 0.50 × 700 = <b>350 coins</b>.</span></div>
+        <div class="note"><span class="id"><b>Contoh:</b> Nasabah tier Micro trading 0.50 lot XAUUSD. Setelah posisi ditutup → 0.50 × 700 = <b>350 koin</b>.</span><span class="en"><b>Example:</b> A Micro-tier client trades 0.50 lot XAUUSD. After the position closes → 0.50 × 700 = <b>350 coins</b>.</span></div>
       </div>
 
       <div class="card calc" id="calc">
         <h3 style="margin:0 0 14px;font-size:18px"><span class="id">Kalkulator koin</span><span class="en">Coin calculator</span></h3>
         <div class="row"><label><span class="id">Tier nasabah</span><span class="en">Client tier</span></label>
           <div class="seg" data-group="tier">
-            <button type="button" data-v="0" aria-pressed="true">Mikro</button>
-            <button type="button" data-v="1" aria-pressed="false">Standar</button>
-            <button type="button" data-v="2" aria-pressed="false">Gold</button>
+            <button type="button" data-v="0" aria-pressed="true">Micro</button>
+            <button type="button" data-v="1" aria-pressed="false">Standard</button>
+            <button type="button" data-v="2" aria-pressed="false">VIP</button>
             <button type="button" data-v="3" aria-pressed="false">Platinum</button>
           </div></div>
         <div class="row"><label><span class="id">Kategori produk</span><span class="en">Product category</span></label>
@@ -475,7 +476,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
     <div class="sec-head"><span class="num">06</span><h2><span class="id">Pertanyaan yang sering ditanya nasabah</span><span class="en">Questions clients often ask</span></h2></div>
     <details><summary><span class="id">Kapan koin saya masuk?</span><span class="en">When do I get my coins?</span></summary><div class="a"><span class="id">Otomatis setelah posisi ditutup (S&amp;K #5).</span><span class="en">Automatically after the position is closed (T&amp;C #5).</span></div></details>
     <details><summary><span class="id">Kenapa saya tidak dapat koin?</span><span class="en">Why didn't I get coins?</span></summary><div class="a"><span class="id">Cek apakah posisi sudah ditutup, ditahan minimal 3 menit, dan di akun real. Nasabah IB dan nasabah yang sudah klaim reward tambahan tidak ikut program (#3, #4, #14).</span><span class="en">Check that the position is closed, was held at least 3 minutes, and is on a real account. IB clients and clients who already claimed an additional reward are not eligible (#3, #4, #14).</span></div></details>
-    <details><summary><span class="id">Tier saya ditentukan dari apa?</span><span class="en">How is my tier decided?</span></summary><div class="a"><span class="id">Dari Net Deposit di akun real: Mikro &lt; $200, Standar $200–&lt;$1,000, Gold $1,000–$5,000, Platinum ≥ $5,000 (#2).</span><span class="en">By Net Deposit on the real account: Mikro &lt; $200, Standard $200–&lt;$1,000, Gold $1,000–$5,000, Platinum ≥ $5,000 (#2).</span></div></details>
+    <details><summary><span class="id">Tier saya ditentukan dari apa?</span><span class="en">How is my tier decided?</span></summary><div class="a"><span class="id">Per akun trading, dari total deposit ke akun tersebut: Micro &lt; $200, Standard ≥ $200, VIP ≥ $1,000, Platinum ≥ $5,000. Tiap akun bisa punya tier berbeda.</span><span class="en">Per trading account, by the total deposit into that account: Micro &lt; $200, Standard ≥ $200, VIP ≥ $1,000, Platinum ≥ $5,000. Each account can have a different tier.</span></div></details>
+    <details><summary><span class="id">Deposit saya sudah mencapai batas, kenapa tier belum naik?</span><span class="en">My deposit reached the threshold — why hasn't my tier changed?</span></summary><div class="a"><span class="id">Kenaikan tier diproses oleh HSB setelah deposit mencapai batas. Sebelum diproses, aplikasi menampilkan "sudah mencapai [tier]" tetapi label tier masih yang lama.</span><span class="en">Tier upgrades are processed by HSB after the deposit reaches the threshold. Until then, the app shows "reached [tier]" but the tier label is still the old one.</span></div></details>
     <details><summary><span class="id">Berapa lama koin berlaku?</span><span class="en">How long are coins valid?</span></summary><div class="a"><span class="id">180 hari sejak koin dikreditkan ke akun (#6).</span><span class="en">180 days from the date the coins are credited (#6).</span></div></details>
     <details><summary><span class="id">Bisa ditukar jadi uang atau margin?</span><span class="en">Can coins become cash or margin?</span></summary><div class="a"><span class="id">Tidak. Koin hanya untuk barang di HSB Mall dan tidak bisa ditransfer ke akun lain (#7).</span><span class="en">No. Coins are only for items at HSB Mall and cannot be transferred to another account (#7).</span></div></details>
     <details><summary><span class="id">Kenapa saya tidak bisa tukar hadiah?</span><span class="en">Why can't I redeem a reward?</span></summary><div class="a"><span class="id">Nasabah perlu: (1) verifikasi akun (KYC), (2) deposit pertama, (3) trading untuk mengumpulkan koin. Aplikasi menampilkan panduan ini saat nasabah menekan "Tukar" (Langkah 7).</span><span class="en">The client needs to: (1) verify the account (KYC), (2) make a first deposit, (3) trade to collect coins. The app shows this guide when the client taps "Redeem" (Step 7).</span></div></details>
