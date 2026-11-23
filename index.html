@@ -63,6 +63,13 @@ h1 em{font-style:normal;color:var(--accent)}
 .fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
 .fact b{display:block;font-size:20px;letter-spacing:-.01em}
 .fact > span{font-size:13px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.fact.wide{grid-column:1/-1;border-color:var(--accent);background:var(--accent-soft)}
+.fact.wide ol{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact.wide li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.5}
+.fact.wide li strong{display:block;font-size:17px;color:var(--ink)}
+.fact.wide li b{display:inline;font-size:inherit;letter-spacing:0}
+.fact.wide .when{flex:none;font-size:13px;font-weight:700;color:var(--accent-ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+@media (max-width:820px){.fact.wide ol{grid-template-columns:1fr}.fact.wide li{flex-direction:column;gap:6px}}
 @media (max-width:820px){.facts{grid-template-columns:repeat(2,1fr)}}
 
 /* sections */
@@ -224,6 +231,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
       <div class="fact"><span class="id">Peserta</span><span class="en">Who</span><b><span class="id">Nasabah aktif</span><span class="en">Active clients</span></b></div>
       <div class="fact"><span class="id">Koin masuk</span><span class="en">Coins credited</span><b><span class="id">Setelah posisi ditutup</span><span class="en">After position closes</span></b></div>
       <div class="fact"><span class="id">Masa berlaku koin</span><span class="en">Coin validity</span><b><span class="id">180 hari</span><span class="en">180 days</span></b></div>
+      <div class="fact wide"><span class="id">Jadwal launching</span><span class="en">Launch timeline</span>
+        <ol>
+          <li><span class="when"><span class="id">23 Nov, malam</span><span class="en">23 Nov, night</span></span><span><strong><span class="id">Ikon &amp; banner muncul di aplikasi</span><span class="en">Icon &amp; banner go live in the app</span></strong><span class="id">Ikon dan banner HSB Loyalty di <b>Beranda</b> dan <b>Profil</b> diaktifkan beberapa menit sebelum launching pukul 00:00 WIB, sehingga semua pengguna langsung bisa melihatnya.</span><span class="en">The HSB Loyalty icon and banner on <b>Home</b> and <b>Profile</b> are switched on a few minutes before the 00:00 WIB launch, so every user sees them right away.</span></span></li>
+          <li><span class="when"><span class="id">24 Nov, 10:00 WIB</span><span class="en">24 Nov, 10:00 WIB</span></span><span><strong><span class="id">Push &amp; email ke nasabah</span><span class="en">Push &amp; email to clients</span></strong><span class="id">Notifikasi push dan email pengumuman launching dikirim ke nasabah (WIB = GMT+7).</span><span class="en">A push notification and an email announcing the launch are sent to clients (WIB = GMT+7).</span></span></li>
+        </ol>
+      </div>
     </div>
   </div>
 
